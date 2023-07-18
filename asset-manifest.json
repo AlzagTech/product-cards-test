@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/product-cards-test/static/css/main.b5320759.css",
+    "main.js": "/product-cards-test/static/js/main.d5f1a695.js",
+    "index.html": "/product-cards-test/index.html",
+    "main.b5320759.css.map": "/product-cards-test/static/css/main.b5320759.css.map",
+    "main.d5f1a695.js.map": "/product-cards-test/static/js/main.d5f1a695.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b5320759.css",
+    "static/js/main.d5f1a695.js"
+  ]
+}
