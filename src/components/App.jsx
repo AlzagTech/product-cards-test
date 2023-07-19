@@ -1,16 +1,25 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { fetchProducts } from 'redux/products/operations';
+
+import { Container } from 'components/Container/Container';
+import { Filter } from './Filter/Filter';
+import { ProductCardsList } from './ProductCardsList/ProductCardsList';
+
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      Product cards test
-    </div>
+    <>
+      <Container>
+        <Filter />
+        <ProductCardsList />
+      </Container>
+    </>
   );
 };
