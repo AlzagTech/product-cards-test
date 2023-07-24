@@ -12,7 +12,7 @@ import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 
 import { productsReducer } from './products/slice';
-import { filterSlice } from './filter/slice';
+import { categorySlice, filterSlice } from './filter/slice';
 
 const productsPersistConfig = {
   key: 'products',
@@ -23,6 +23,7 @@ export const store = configureStore({
   reducer: {
     products: persistReducer(productsPersistConfig, productsReducer),
     filter: filterSlice.reducer,
+    currentCategory: categorySlice.reducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

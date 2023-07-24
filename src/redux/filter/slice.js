@@ -10,4 +10,15 @@ export const filterSlice = createSlice({
   },
 });
 
+export const categorySlice = createSlice({
+  name: 'currentCategory',
+  initialState: 'All',
+  reducers: {
+    setCategory(state, action) {
+      return (state = action.payload);
+    },
+  },
+});
+
 export const { setFilter } = filterSlice.actions;
+export const { setCategory } = categorySlice.actions;
