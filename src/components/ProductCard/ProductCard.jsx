@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   Card,
   CardInfoBox,
@@ -10,11 +8,11 @@ import {
 } from './ProductCard.styled';
 
 export const ProductCard = ({ product }) => {
-  const { name, img, price, bsr_category, asin, link } = product;
+  const { name, img, price, bsr_category, asin } = product;
 
   return (
     <Card>
-      <CardLink href={link}>
+      <CardLink to={`/${product.asin}`}>
         <CardPicture>
           <img src={img} alt="Product" />
         </CardPicture>

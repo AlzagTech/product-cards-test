@@ -1,19 +1,35 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Card = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   border: 1px solid #eeeeee;
   box-sizing: border-box;
+  background-color: #fff;
 
-  flex-basis: calc((100% - 62px) / 3);
+  @media screen and (max-width: 767px) {
+    & + & {
+      margin-top: 30px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 30px) / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 60px) / 3);
+  }
 `;
 
-export const CardLink = styled.a`
+export const CardLink = styled(Link)`
   color: #333;
   text-decoration: none;
+  width: 100%;
 
   &:hover,
   &:focus {
@@ -26,7 +42,7 @@ export const CardPicture = styled.div`
   position: relative;
   display: block;
   height: 378px;
-  width: 378px;
+  width: 100%;
   text-align: center;
 
   margin: 0;
@@ -60,7 +76,7 @@ export const CardLabelBox = styled.div`
 
 export const CardTitle = styled.p`
   display: block;
-  height: 40px;
+  height: 42px;
   margin-bottom: 18px;
   overflow: hidden;
 

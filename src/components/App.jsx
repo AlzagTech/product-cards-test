@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 
-import { fetchProducts } from 'redux/products/operations';
-
-import { Container } from 'components/Container/Container';
-import { Filter } from './Filter/Filter';
-import { ProductCardsList } from './ProductCardsList/ProductCardsList';
+import { Layout } from './Layout/Layout';
+import { Home } from '../pages/Home';
+import { ProductDetails } from '../pages/ProductDetails/ProductDetails';
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
   return (
-    <>
-      <Container>
-        <Filter />
-        <ProductCardsList />
-      </Container>
-    </>
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/:productId" element={<ProductDetails />} />
+        </Route>
+      </Routes>
+    </div>
   );
 };
