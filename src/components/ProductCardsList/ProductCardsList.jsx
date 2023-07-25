@@ -4,6 +4,7 @@ import { selectVisibleProducts } from 'redux/filter/selectors';
 
 import { CardsList } from './ProductCardsList.styled';
 import { ProductCard } from 'components/ProductCard/ProductCard';
+import { Message } from 'components/Message/Message';
 
 export const ProductCardsList = () => {
   const visibleProducts = useSelector(selectVisibleProducts);
@@ -18,7 +19,7 @@ export const ProductCardsList = () => {
           ))}
         </CardsList>
       ) : (
-        <p>No results...</p>
+        <Message>No results...</Message>
       )}
     </>
   );
