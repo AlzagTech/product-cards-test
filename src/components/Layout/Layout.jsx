@@ -18,11 +18,13 @@ export const Layout = () => {
     <>
       <Header />
       <main>
-        <Container>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Outlet />
-          </Suspense>
-        </Container>
+        <section>
+          <Container>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
+          </Container>
+        </section>
       </main>
     </>
   );
