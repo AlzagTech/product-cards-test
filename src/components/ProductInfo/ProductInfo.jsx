@@ -14,6 +14,7 @@ import {
   ProductPriceBox,
   ProductTitle,
 } from './ProductInfo.styled';
+import { Message } from 'components/Message/Message';
 
 export const ProductInfo = () => {
   const { productId } = useParams();
@@ -51,7 +52,7 @@ export const ProductInfo = () => {
           </ProductInfoBox>
         </ProductBox>
       ) : (
-        <p>Not found...</p>
+        <Message>Not found...</Message>
       )}
     </>
   );
