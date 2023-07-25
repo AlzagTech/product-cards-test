@@ -1,11 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import icon from '../../images/sprite.svg';
 
 import { setFilter, setCategory } from '../../redux/filter/slice';
 import { selectProducts } from 'redux/products/selectors';
-import { selectCategory, selectFilter } from 'redux/filter/selectors';
+import {
+  selectCategory,
+  selectFilter,
+  selectVisibleProducts,
+} from 'redux/filter/selectors';
 
 import {
   FilterLabel,
@@ -13,12 +18,19 @@ import {
   CategoryList,
   Button,
   IconSearch,
+  CategoryBox,
+  CategoryBtn,
+  CategoryBtnBox,
 } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   const currentCategory = useSelector(selectCategory);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const visibleProducts = useSelector(selectVisibleProducts);
+  const visibleProductsLength = visibleProducts.length;
 
   const productsCategories = useSelector(selectProducts)
     .reduce((previousValue, product) => {
@@ -37,6 +49,10 @@ export const Filter = () => {
     dispatch(setCategory(category));
   };
 
+  const onCategoryBtnClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <FilterLabel htmlFor="filter">
       <FilterInput
@@ -50,29 +66,49 @@ export const Filter = () => {
         <use href={icon + '#icon-search'}></use>
       </IconSearch>
 
-      <CategoryList>
-        <li key={nanoid()}>
-          <Button
-            className={`${currentCategory === `All` ? 'isSelected' : ''}`}
-            onClick={() => handleCategoryChange('All')}
-          >
-            All
-          </Button>
-        </li>
-
-        {productsCategories.map(category => (
-          <li key={nanoid()}>
-            <Button
-              className={`${
-                currentCategory === `${category}` ? 'isSelected' : ''
-              }`}
-              onClick={() => handleCategoryChange(category)}
+      {visibleProductsLength ? (
+        <>
+          <CategoryBtnBox>
+            <CategoryBtn
+              className={isOpen ? 'opened' : ''}
+              onClick={onCategoryBtnClick}
             >
-              {category}
-            </Button>
-          </li>
-        ))}
-      </CategoryList>
+              {isOpen ? 'Hide categories' : 'Show categories'}
+              <svg width="24" height="24">
+                <use href={icon + '#icon-chevron-down'}></use>
+              </svg>
+            </CategoryBtn>
+          </CategoryBtnBox>
+
+          <CategoryBox className={isOpen ? 'isOpen' : ''}>
+            <CategoryList>
+              <li key={nanoid()}>
+                <Button
+                  className={`${currentCategory === `All` ? 'isSelected' : ''}`}
+                  onClick={() => handleCategoryChange('All')}
+                >
+                  All
+                </Button>
+              </li>
+
+              {productsCategories.map(category => (
+                <li key={nanoid()}>
+                  <Button
+                    className={`${
+                      currentCategory === `${category}` ? 'isSelected' : ''
+                    }`}
+                    onClick={() => handleCategoryChange(category)}
+                  >
+                    {category}
+                  </Button>
+                </li>
+              ))}
+            </CategoryList>
+          </CategoryBox>
+        </>
+      ) : (
+        ''
+      )}
     </FilterLabel>
   );
 };

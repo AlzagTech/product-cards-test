@@ -39,7 +39,67 @@ export const IconSearch = styled.svg`
   fill: rgba(33, 33, 33, 0.2);
 `;
 
+export const CategoryBtnBox = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
+export const CategoryBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 200px;
+  margin-bottom: 24px;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  line-height: 1.62;
+  font-size: 16px;
+  font-weight: 500;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.2s;
+  background-color: #845ec2;
+
+  &:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: 0.1s;
+  }
+
+  &.opened {
+    svg {
+      transform: rotate(0.5turn);
+    }
+  }
+
+  svg {
+    margin-left: 4px;
+    fill: #ffffff;
+  }
+`;
+
+export const CategoryBox = styled.div`
+  display: none;
+  overflow: hidden;
+
+  &.isOpen {
+    display: block;
+  }
+`;
+
 export const CategoryList = styled.ul`
+  /* transition: transform 2000ms ease-in-out;
+  transform: translateY(-110%); */
+
   font-size: 0;
   display: flex;
   flex-wrap: wrap;
