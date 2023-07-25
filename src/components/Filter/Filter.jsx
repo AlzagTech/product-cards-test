@@ -51,7 +51,7 @@ export const Filter = () => {
       </IconSearch>
 
       <CategoryList>
-        <li>
+        <li key={nanoid()}>
           <Button
             className={`${currentCategory === `All` ? 'isSelected' : ''}`}
             onClick={() => handleCategoryChange('All')}
@@ -61,13 +61,12 @@ export const Filter = () => {
         </li>
 
         {productsCategories.map(category => (
-          <li>
+          <li key={nanoid()}>
             <Button
               className={`${
                 currentCategory === `${category}` ? 'isSelected' : ''
               }`}
               onClick={() => handleCategoryChange(category)}
-              key={nanoid()}
             >
               {category}
             </Button>
