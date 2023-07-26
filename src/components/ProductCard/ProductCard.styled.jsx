@@ -77,8 +77,11 @@ export const CardTitle = styled.p`
 `;
 
 export const CardInfoBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-
   margin-bottom: 32px;
+  text-align: start;
+
+  @media screen and (min-width: 480px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
