@@ -89,11 +89,26 @@ export const CategoryBtn = styled.button`
 
 export const CategoryBox = styled.div`
   display: none;
+  position: absolute;
   overflow: hidden;
-
+  /* height: 0%; */
+  /* 
   &.isOpen {
     display: block;
   }
+
+  &.isOpen ul {
+    transform: translateY(0%);
+  } */
+
+  &.isOpen {
+    position: relative;
+    display: block;
+    transition: transform 2000ms ease-in-out;
+    transform: translateY(0%);
+  }
+
+  transform: translateY(-110%);
 `;
 
 export const CategoryList = styled.ul`
