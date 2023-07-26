@@ -40,22 +40,13 @@ export const CardLink = styled(Link)`
 
 export const CardPicture = styled.div`
   position: relative;
-  display: block;
-  height: 378px;
-  width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
+  max-height: 378px;
+  width: 100%;
 
   img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     max-height: 360px;
     max-width: 100%;
     vertical-align: middle;
@@ -64,7 +55,6 @@ export const CardPicture = styled.div`
 
 export const CardLabelBox = styled.div`
   padding: 15px;
-
   text-align: right;
 
   span {
